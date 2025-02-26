@@ -18,18 +18,19 @@ def projectLicenses = ["Apache-2.0"]
 def projectLicenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
 def projectKeywords = ['android', 'custom', 'checkbox']
 def developerFullName = "iGenius"
-group = projectGroup
+group = "new.igenius"
 version = "1.3"
 
 def sdkVersion = 24;
-def toolsVersion = "24.0.3";
+//def toolsVersion = "24.0.3";
 
 android {
-    compileSdkVersion sdkVersion
-    buildToolsVersion toolsVersion
+    namespace 'net.igenius.customcheckbox'
+    compileSdkVersion 33
+//    buildToolsVersion toolsVersion
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion sdkVersion
+        targetSdkVersion 33
         versionCode 4
         versionName version
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -125,30 +126,30 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
 }
 
-task javadoc(type: Javadoc) {
-    title = "$projectName $project.version API"
-    description "Generates Javadoc"
-    source = android.sourceSets.main.java.srcDirs
-    classpath += files(android.bootClasspath)
-    exclude '**/BuildConfig.java', '**/R.java'
-    options {
-        windowTitle("$projectName $project.version Reference")
-        locale = 'en_US'
-        encoding = 'UTF-8'
-        charSet = 'UTF-8'
-        links("http://docs.oracle.com/javase/7/docs/api/");
-        linksOffline("http://d.android.com/reference", "${android.sdkDirectory}/docs/reference");
-        setMemberLevel(JavadocMemberLevel.PUBLIC)
-    }
-}
+//task javadoc(type: Javadoc) {
+//    title = "$projectName $project.version API"
+//    description "Generates Javadoc"
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += files(android.bootClasspath)
+//    exclude '**/BuildConfig.java', '**/R.java'
+//    options {
+//        windowTitle("$projectName $project.version Reference")
+//        locale = 'en_US'
+//        encoding = 'UTF-8'
+//        charSet = 'UTF-8'
+//        links("http://docs.oracle.com/javase/7/docs/api/");
+//        linksOffline("http://d.android.com/reference", "${android.sdkDirectory}/docs/reference");
+//        setMemberLevel(JavadocMemberLevel.PUBLIC)
+//    }
+//}
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
 
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
+//artifacts {
+//    archives javadocJar
+//    archives sourcesJar
+//}
 
